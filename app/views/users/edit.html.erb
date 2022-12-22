@@ -1,2 +1,10 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h2>プロフィール編集</h2>
+<%= form_for(@user, url: user_path(current_user.id)) do |f| %>
+  <label for="inputName">Name</label><br>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%><br>
+  <label for="inputImage">ProfileImage</label><br>
+  <%= f.file_field :profile_image, placeholder: "image", accept: "image/*" %> <br>
+  <label for="inputIntroduction">Introduction</label><br>
+  <%= f.text_area :introduction, autofocus: true,　placeholder:"自己紹介"%><br>
+  <%= f.submit "Update User" %><br>
+<% end %>
