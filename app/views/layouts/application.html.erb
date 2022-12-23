@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 
-  <head>
-    <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <title>Bookers2</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
 <body>
   <header>
-        
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
           <a class="navbar-brand" href="/">
-            
-            <%= link_to(root_path) do %>
-             <i style="color: white">Bookers</i>
-            <% end %>
-            
+
+          <nav class="text-muted"><span><strong>Bookers</strong></span></nav>
+
           </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,35 +28,54 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
-    <% if user_signed_in? %>
-    
+  <% if user_signed_in? %>
+
       <%= link_to(user_path(current_user.id)) do %>
-      <i class="fa-solid fa-house-chimney"style="color: white"></i>
-      <i style="color: white">home　</i>
+        <i class="fas fa-home"style="color: white"></i>
+        <i style="color: white">Home　</i>
       <% end %>
-    
+
       <%= link_to(users_path) do %>
-      <i class="fa-solid fa-users"style="color: white"></i>
-      <i style="color: white">Users　</i>
+        <i class="fas fa-users"style="color: white"></i>
+        <i style="color: white">Users　</i>
       <% end %>
-   
+
       <%= link_to(books_path) do %>
-      <i class="fa-solid fa-book-open"style="color: white"></i>
-      <i style="color: white">Books　</i>
+        <i class="fas fa-book-open"style="color: white"></i>
+        <i style="color: white">Books　</i>
       <% end %>
-      
+
       <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <%= link_to (destroy_user_session_path), method: :delete  do %>
+          <i class="fas fa-sign-out-alt"style="color: white"></i>
+          <i style="color: white">Log out　</i>
+        <% end %>
       </li>
 
-      
-    <% else %>
-              <li><%= link_to 'Home', root_path , class: %></li>
-              <li><%= link_to 'About', about_path , class: %></li>
-              <li><%= link_to 'Sign up', "/users/sign_up" %></li>
-              <li><%= link_to 'Log in',  "/users/sign_in" %></li>
-    <% end %>
-      
+  <% else %>
+
+     <%= link_to(root_path) do %>
+      <i class="fas fa-home"style="color: white"></i>
+      <i style="color: white">Home　</i>
+      <% end %>
+
+  <%= link_to(home_about_path) do %>
+      <i class="fas fa-link"style="color: white"></i>
+      <i style="color: white">About　</i>
+      <% end %>
+
+  <%= link_to("/users/sign_up") do %>
+      <i class="fas fa-user-plus"style="color: white"></i>
+      <i style="color: white">Sign up　</i>
+      <% end %>
+
+  <%= link_to("/users/sign_in") do %>
+      <i class="fas fa-sign-in-alt"style="color: white"></i>
+      <i style="color: white">Log in　</i>
+      <% end %>
+
+<% end %>
+
       </ul>
        </div>
       </div>
@@ -67,16 +84,16 @@
 <%= flash[:notice] %>
     <%= yield %>
 
-    
-    <footer>
+
+<footer>
   <div class="container mt-5">
-  	<div class="row">
-    	<div class="mx-auto">
-    		<p>CopyRight Infratop.inc</p>
+    <div class="row">
+      <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
     	</div>
     </div>
   </div>
 </footer>
-    
+
 </body>
 </html>

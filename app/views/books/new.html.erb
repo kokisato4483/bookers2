@@ -1,10 +1,8 @@
-    <%= form_for(@book, url: books_path) do |f| %>
+<%= form_for(@book, url: books_path) do |f| %>
     <h1>New book</1>
     <h1>Title</h1>
     <%= f.text_field :title %>
     <h1>Opinipn</h1>
     <%= f.text_field :body %>
     <nav><%= f.submit 'Create Book' %></nav>
-    <% end %>
-
-  </div>
+<% end %>
